@@ -12,10 +12,7 @@ app.use(cors());
 app.use(cookieParser())
 
 
-app.use(
-  "/main--userregistrationetern.netlify.app/api/user",
-  userRouter
-);
+app.use("/api/user", userRouter);
 
 app.listen(PORT, () => {
   console.log(PORT + " " + "server start");
