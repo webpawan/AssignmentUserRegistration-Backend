@@ -9,6 +9,10 @@ import userRouter from "./routes/userRoutes.js";
 import cookieParser from "cookie-parser";
 
 app.use(cookieParser())
+app.get("/api/", (req,res)=>{
+  res.send("api is working")
+});
+
 app.use("/api/user", userRouter);
 
 app.listen(PORT, () => {
