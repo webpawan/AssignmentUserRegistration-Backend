@@ -7,11 +7,10 @@ const app = express();
 app.use(express.json());
 import userRouter from "./routes/userRoutes.js";
 import cookieParser from "cookie-parser";
-
+import cors from "cors"
+app.use(cors());
 app.use(cookieParser())
-app.get("/api/", (req,res)=>{
-  res.send("api is working")
-});
+
 
 app.use("/api/user", userRouter);
 
