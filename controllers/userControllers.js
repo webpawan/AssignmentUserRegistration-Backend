@@ -22,8 +22,8 @@ export const signup = async (req, res) => {
     if (newUser) {
       const token = await newUser.genrateToken();
       res.cookie("jwt", token, {
-        httpOnly: true,
-        //  secure: true,
+        // httpOnly: true,
+         secure: true,
       });
       await newUser.save();
       res.status(200).json(newUser);
@@ -48,8 +48,8 @@ export const signin = async (req, res) => {
       if (isMatch) {
         const token = await loginUser.genrateToken();
         res.cookie("jwt", token, {
-          httpOnly: true,
-          // secure: true,
+          // httpOnly: true,
+          secure: true,
         });
         return res.status(200).json(loginUser);
       } else {
