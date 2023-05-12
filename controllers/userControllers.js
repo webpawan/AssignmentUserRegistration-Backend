@@ -5,12 +5,12 @@ export const signup = async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-      res.status(400).json({ message: "404 fill the all fields" });
+      res.status(400).send({ message: "404 fill the all fields" });
     }
     const userExit = await User.findOne({ email: email });
     if (userExit) {
       return res
-        .status(400)
+        .send(400)
         .json({ message: "404 user already exit in data base" });
     }
     const newUser = await User({
@@ -28,7 +28,7 @@ export const signup = async (req, res) => {
       await newUser.save();
       res.status(200).json(newUser);
     } else {
-      res.status(400).json({ message: "404 something wrong" });
+      res.status(400).send({ message: "404 something wrong" });
     }
   } catch (error) {
     res.status(400).json({ message: "404 something wrong" });

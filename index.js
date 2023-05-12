@@ -8,7 +8,7 @@ app.use(express.json());
 import userRouter from "./routes/userRoutes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors"
-app.use(cors());
+app.use(cors({origin:"*"}));
 app.use(cookieParser())
 
 
