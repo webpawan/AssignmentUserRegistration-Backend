@@ -65,15 +65,19 @@ export const signin = async (req, res) => {
 export const rename = async (req, res) => {
   const { userId, name } = req.body;
   console.log(userId, name);
-  const updatedName = await User.findByIdAndUpdate(
-    userId,
-    { name: name },
-    { new: true }
-  );
-  if (!updatedName) {
-    res.status(400).send("name changin api problem");
-  } else {
-    res.json(updatedName);
+  try {
+    const updatedName = await User.findByIdAndUpdate(
+      userId,
+      { name: name },
+      { new: true }
+    );
+    if (!updatedName) {
+      res.status(400).send("name changin api problem");
+    } else {
+      res.json(updatedName);
+    }
+  } catch (error) {
+    res.status(400).json("something wrong the name change api")
   }
 };
 export const password = async (req, res) => {
